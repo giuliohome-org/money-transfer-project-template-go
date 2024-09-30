@@ -9,6 +9,8 @@ package app
 import (
 	"errors"
 	"math/rand"
+	"strconv"
+	"os"
 )
 
 type account struct {
@@ -77,7 +79,7 @@ func (client BankingService) Withdraw(accountNumber string, amount int, referenc
 		return "", &InsufficientFundsError{}
 	}
 
-	return generateTransactionID("W", 10), nil
+	return generateTransactionID("RefID" + referenceID +"W", 10), nil
 }
 
 // Deposit simulates a Deposit into a bank.
@@ -106,5 +108,5 @@ func generateTransactionID(prefix string, length int) string {
 		allowedChars := "0123456789"
 		randChars[i] = allowedChars[rand.Intn(len(allowedChars))]
 	}
-	return prefix + string(randChars)
+	return prefix + string(randChars) + "_genPID_" + strconv.Itoa(os.Getpid())
 }

@@ -39,6 +39,7 @@ func MoneyTransfer(ctx workflow.Context, input PaymentDetails) (string, error) {
 	if withdrawErr != nil {
 		return "", withdrawErr
 	}
+	fmt.Println("Withdrawal complete with transaction ID:", withdrawOutput)
 
 	// Deposit money.
 	var depositOutput string
