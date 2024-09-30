@@ -1,4 +1,4 @@
-# Fork's reason
+# Why This Fork Exists
 
 This fork refactors the Withdraw function in the `activity.go` file to support subprocess execution: see the [issue mentioned in this README](https://github.com/giuliohome/event_loop). It introduces a new function `WithdrawProcess` that handles the subprocess logic. The `Withdraw` function now serializes the input data to JSON, writes it to a temporary file, and invokes the `WithdrawProcess` subprocess using the `os.Executable` command. It captures the output from the subprocess and unmarshals it back into the `PaymentDetails` struct. The result is then returned as the confirmation for the withdrawal.
 
