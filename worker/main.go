@@ -12,11 +12,15 @@ import (
 
 // Entry point - checks if we are in subprocess mode
 func init() {
-	// log.Printf("Init command %s", os.Args[0])
+	log.Printf("Init command %s", os.Args[0])
 	if len(os.Args) == 4 && os.Args[1] == "WithdrawProcess" {
-		// log.Printf("Init WithdrawProcess %s", os.Args[1])
+		log.Printf("Init WithdrawProcess %s", os.Args[2])
 		app.WithdrawProcess(os.Args[2], os.Args[3])
 		os.Exit(0) // Ensure the subprocess exits after completing its work
+	}
+	if len(os.Args) > 1 {
+		log.Fatalf("Unknown command %s or wrong parameters", os.Args[1])
+		os.Exit(1) // Ensure the subprocess exits on error
 	}
 }
 

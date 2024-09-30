@@ -9,8 +9,8 @@ package app
 import (
 	"errors"
 	"math/rand"
-	"strconv"
 	"os"
+	"strconv"
 )
 
 type account struct {
@@ -79,7 +79,7 @@ func (client BankingService) Withdraw(accountNumber string, amount int, referenc
 		return "", &InsufficientFundsError{}
 	}
 
-	return generateTransactionID("RefID" + referenceID +"W", 10), nil
+	return generateTransactionID("RefID"+referenceID+"W", 10), nil
 }
 
 // Deposit simulates a Deposit into a bank.
@@ -99,7 +99,7 @@ func (client BankingService) Deposit(accountNumber string, amount int, reference
 
 // DepositThatFails simulates an unknown error.
 func (client BankingService) DepositThatFails(accountNumber string, amount int, referenceID string) (string, error) {
-	return "", errors.New("This deposit has failed.")
+	return "", errors.New("this deposit has failed")
 }
 
 func generateTransactionID(prefix string, length int) string {

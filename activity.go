@@ -62,9 +62,9 @@ func Withdraw(ctx context.Context, jsonData PaymentDetails) (string, error) {
 
 	var result PaymentDetails
 	if err := json.Unmarshal(data_output, &result); err != nil {
-		return "error", fmt.Errorf("unmarshalling JSON: %v \nfrom output %s ", err, output)
+		return "error", fmt.Errorf("unmarshalling JSON: %v \nfrom output %s", err, output)
 	}
-	fmt.Printf("Result unmarshalled: %v confirmation %s", result, result.Confirmation)
+	fmt.Printf("Result unmarshalled: %v confirmation %s\n\n", result, result.Confirmation)
 
 	return result.Confirmation, err
 }
